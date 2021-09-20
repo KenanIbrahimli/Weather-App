@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/day_cloud_amination"
+    android:oneshot="false">
+    <item android:drawable="@drawable/day_cloud_1" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_2" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_3" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_4" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_5" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_6" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_7" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_8" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_9" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_10" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_11" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_12" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_13" android:duration="50"/>
+    <item android:drawable="@drawable/day_cloud_14" android:duration="50"/>
+
+
+</animation-list >

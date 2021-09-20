@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sunny_day_amination"
+    android:oneshot="false">
+    <item android:drawable="@drawable/overcast_day_1" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_2" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_3" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_4" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_5" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_6" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_7" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_8" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_9" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_10" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_11" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_12" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_13" android:duration="50"/>
+    <item android:drawable="@drawable/overcast_day_14" android:duration="50"/>
+
+
+</animation-list >

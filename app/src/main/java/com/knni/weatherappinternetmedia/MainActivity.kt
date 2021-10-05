@@ -1,6 +1,5 @@
 package com.knni.weatherappinternetmedia
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.databinding.DataBindingUtil
@@ -14,47 +13,46 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.knni.weatherappinternetmedia.databinding.ActivityMainBinding
-import com.knni.weatherappinternetmedia.model.WeatherModel
 import com.knni.weatherappinternetmedia.utils.Utilities
 
 
 class MainActivity : AppCompatActivity() {
 
-    private var mainview: ActivityMainBinding? = null
-    private var mvm: MainActivityViewModel? = null
-    private var city = ""
+    lateinit var binding: ActivityMainBinding
+    private var viewModel: MainActivityViewModel? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainview = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        mvm = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
 
 
-        mainview?.ivCallEdittext?.setOnClickListener {
-            mainview?.cvInputCity?.visibility = View.VISIBLE
-            mainview?.cvSearchBtn?.visibility = View.GONE
-            mainview?.btnSearch?.visibility = View.VISIBLE
+        binding.ivCallEdittext.setOnClickListener {
+            binding.cvInputCity.visibility = View.VISIBLE
+            binding.cvSearchBtn.visibility = View.GONE
+            binding.btnSearch.visibility = View.VISIBLE
         }
 
-        mainview?.btnSearch?.setOnClickListener {
+        binding.btnSearch.setOnClickListener {
 
-            //Проверка на инрернет соединение
+            //Проверка на инрернет соединени
             if (isOnline(this)) {
 
-                city = mainview?.etCityText?.text.toString()
-                mvm?.weatherRequestData((application as WeatherApp).api, city)
+                val city = binding.etCityText.text.toString()
+                viewModel?.weatherRequestData((application as WeatherApp).api, city)
 
 
-                mvm?.getWeatherDataObserver()?.observe(this,
-                    Observer<WeatherModel> { item ->
+                viewModel?.getWeatherDataObserver()?.observe(this,
+                    { item ->
                         if (item != null) {
-                            mainview?.tvCity?.text = item.name
-                            mainview?.tvCode?.text = item.sys.country
-                            mainview?.tvTitle?.text = item.weather[0].main
-                            mainview?.tvDescription?.text = item.weather[0].description
-                            mainview?.tvTemperature?.text =
+                            binding.tvCity.text = item.name
+                            binding.tvCode.text = item.sys.country
+                            binding.tvTitle.text = item.weather[0].main
+                            binding.tvDescription.text = item.weather[0].description
+                            binding.tvTemperature.text =
                                 Utilities.kelvinToCelsius(item.main.temp) + "C"
-                            mainview?.ivWeatherIcon?.setImageResource(
+                            binding.ivWeatherIcon.setImageResource(
                                 Utilities.stringToIcon(
                                     item.weather[0].icon
                                 )
@@ -82,8 +80,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setBackgroundAnimation(icon: String) {
-        var iv = findViewById<ConstraintLayout>(R.id.main_screen)
+    private fun setBackgroundAnimation(icon: String) {
+        val iv = findViewById<ConstraintLayout>(R.id.main_screen)
         when (icon) {
             "01d" -> iv.setBackgroundResource(R.drawable.sunny_day)
             "02d" -> iv.setBackgroundResource(R.drawable.sunny_day)
@@ -109,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         fl.start()
     }
 
-    fun checkForNull(name: String, country: String, main: String, description: String, temp: String): Toast {
+    private fun checkForNull(name: String, country: String, main: String, description: String, temp: String): Toast {
         var toast: Toast = Toast.makeText(applicationContext, "", Toast.LENGTH_SHORT)
 
         if (name.isEmpty() || country.isEmpty() || main.isEmpty() || description.isEmpty() || temp.isEmpty()) {
@@ -123,10 +121,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun isOnline(context: Context): Boolean {
+    private fun isOnline(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivityManager != null) {
+
             val capabilities =
                 connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
             if (capabilities != null) {
@@ -141,7 +139,7 @@ class MainActivity : AppCompatActivity() {
                     return true
                 }
             }
-        }
+
         return false
     }
 }

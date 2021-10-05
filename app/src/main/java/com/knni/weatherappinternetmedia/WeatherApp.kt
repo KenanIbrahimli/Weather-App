@@ -31,7 +31,7 @@ class WeatherApp: Application() {
                 .build()
 
             Retrofit.Builder()
-                .baseUrl(Constants.URL)
+                .baseUrl(Constants.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

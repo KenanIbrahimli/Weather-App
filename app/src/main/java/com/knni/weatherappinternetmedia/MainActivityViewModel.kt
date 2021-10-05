@@ -2,6 +2,7 @@ package com.knni.weatherappinternetmedia
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.util.Log
 import com.knni.weatherappinternetmedia.api.WeatheraApi
@@ -13,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
 
     private val compositeDisposable = CompositeDisposable()
-    private var weatherResponse: MutableLiveData<WeatherModel> = MutableLiveData()
+    private val weatherResponse: MutableLiveData<WeatherModel> = MutableLiveData()
 
     override fun onCleared() {
         compositeDisposable.dispose()
@@ -39,7 +40,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
             )
         }
     }
-    fun getWeatherDataObserver(): MutableLiveData<WeatherModel> {
+    fun getWeatherDataObserver(): LiveData<WeatherModel> {
         return weatherResponse
     }
 

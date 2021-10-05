@@ -12,10 +12,10 @@ import java.util.*
 
 interface WeatheraApi {
 
-    @GET("weather?")
+    @GET("weather")
     fun getWeatherData(
         @Query("q") city: String,
-        @Query("appid") key: String = Constants.KEY
+        @Query("appid") key: String = Constants.API_KEY
     ): Single<WeatherModel>
 }
 

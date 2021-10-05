@@ -1,15 +1,15 @@
 package com.knni.weatherappinternetmedia.model
 
 data class WeatherModel(
-    var coord: Coord,
-    var weather: ArrayList<Weather>,
+    var coord: CoordModel,
+    var weather: ArrayList<WeatherInfoModel>,
     var base: String,
-    var main: Main,
+    var main: MainModel,
     var visibility: Int,
-    var wind: Wind,
-    var clouds: Clouds,
+    var wind: WindModel,
+    var clouds: CloudsModel,
     var dt: Int,
-    var sys: Sys,
+    var sys: SysModel,
     var timezone: Int,
     var id: Int,
     var name: String,
@@ -17,23 +17,23 @@ data class WeatherModel(
 )
 
 
-data class Sys(
+data class SysModel(
     var type: Int,
     var id: Int,
     var country: String,
     var sunrise: Int,
     var sunset: Int
 )
-data class Clouds(
+data class CloudsModel(
     var all: Int
 )
 
-data class Wind(
+data class WindModel(
     var speed: Double,
     var deg: Int
 )
 
-data class Main(
+data class MainModel(
     var temp: Double,
     var feels_like: Double,
     var temp_min: Double,
@@ -42,12 +42,12 @@ data class Main(
     var humidity: Int
 )
 
-data class Coord(
+data class CoordModel(
     var lon: Double,
     var lat: Double
 )
 
-data class Weather(
+data class WeatherInfoModel(
     var id: Int,
     var main: String,
     var description: String,
